@@ -417,18 +417,44 @@ A filter on the page can adjust each visualisation to show each year individuall
 ---
 #### Page 3
 
-SCREEN SHOT 3
+SCREEN SHOT 3 10km
 
-Here 
+This page is split to show the same information for 1km, 5km, 10km and half-marathon distances.
 
+All pages show the improvement of Personal Best progression over time and, given the available white space on the graphs, space is available for annotations that point out other notable clusters/trends at each distance.
 
+---
+#### Page 4
 
+SCREEN SHOT 4
 
+The Split Time Distribution graphic on this page plots the split time distribution along the length of each run. A slowing of the pace at greater distances maps as expected. However there appears to be little change between km 1 and around km 16. This is liekly because shorter slower runs in 2020/2021 bring down the average split time at lower diatances whereas once i started running greater distances my standard pace was quicker, broadly balancing out the averages foer the first 16km.
 
+The Split Time v Elevation Change graphic nicely demonstrates an optimum elevation change for maximum pace. The trend line shows quicker times where there is a negative elevation change as expected but also that once the elevation change is greater than -14m/km the positive effects begin to reduce. When filtered for different years the profile of runs is very apparent, barely any elevation change during 2020 (as all runs where along a river) and far greater elevation change in later years when most runs were in a different location.
 
+*Outliers have been removed to better display trends for typical elevation chanegs and paces, plotting all points would leave a lot of white space and make conculsions dificcult to draw due to difficulty in reading the graph*
+
+---
+
+#### Page 5
+
+SCREEN SHOT 5
+
+Here any run can be selected and the route is mapped showing elevation change and split time. This page acts as an index and mirrors the information displayed on Strava for each run. 
+
+---
 
 
 ### Data Visualisation
+
+Throughout the visualisation a consistent simple style, colour scheme and layout is used. This aids in the understanding and ease of use of the visualisations as well as creating a more professional look.
+
+Buttons for navigation give more of a flow through the data than the standard Tableau pages that are also available to use as navigation through the dashboard.
+
+The layout has been configured sepcifically for a laptop browser window. However the layout and readiablilty would have to be assessed for different screen types depending on the anticipated use cases 
+
+
+
 
 
 
