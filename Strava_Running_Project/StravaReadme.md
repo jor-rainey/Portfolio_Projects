@@ -385,12 +385,41 @@ The SQL code uses the raw merged inputs of Latidute, Longitide, Elevation and Ti
 - Rolling Split Times (Using a window function to more accurately find Personal Bests, granularity 100m)
 - 'Point' Speed (speed between consecutive data points, susceptible to error due to vaugaries of GPS connection)
 
-As Tableau Public cannot link directly to PostgreSQL the tables have to be exported from PostgreSQL as .csv files. The exported tables are then collated in a .csv file where a Marco is run that converts the date types for various columns to those more easi;y manipulated wiothin Tableau.
-CHECK PREVOIOUS PARAGRAPH
+As Tableau Public cannot link directly to PostgreSQL the tables have to be exported from PostgreSQL as .csv files. The exported tables are then collated in an Excel file where a Marco is run that converts the date types and units for various columns to those more easily manipulated within Tableau.
 
 ### Data Analysis
 
+Using Tableau I have created a number of visulaisations from this data to make trends, personal bests and general run information more accessible.
+The full dashboard can be seen within TABLEAU PUBLIC along with the full interacvtivity. However the screenshots below can demonstrate how the information is displayed along with some of the information that can be gathered.
 
+---
+#### Page 1
+
+SCRTEEN SHOT 1
+
+This page gives a short introduction to the data being displayed and then show some headline information. Notably the kilometerage increase since 2020, increase typical run length and increase in elevation change. All runs that take place in the two main locations also have their paths overlayed highlighting most frequent running routes.
+
+*Background map information and Latitude and Longitude information is hidden across this dashboard.*
+
+---
+#### Page 2
+
+SCREEN SHOT 2
+
+The Distance and Average Pace graphic demonstrates the increase in typical run length and increase in typical run pace over the years. Additionally a general decrease in run pace as run length increases is apparent. Clusters of runs at just beyond 5km, 10km and half marathon distances can also be seen. 
+
+The Split Time Distribution graph follows an expected pattern. Given the lareg enough sample size the majority of splits cluster around the average split time while tailing away at the faster and slower ends. The graph is capped at a max of 6:00mins/km removing outliers (occasionally where there are errors in the GPS data) and the long tail to the distribution. This allows more ogf the available grapoh space to be used for the relevant information, in this case the vast majority of spit times. The other dimension on this graph indicates the elevation change of each split. While it can be seen that where the elevation increases across a split the split time slows (and visa-versa) this is better demonstrated in visua;iosations later in the dashboard. 
+
+Further information on this page includes Personal Bests and Running Distance Total split per year where the drop off in mid 2023 correlates with an injury and recovery time.
+
+A filter on the page can adjust each visualisation to show each year individually.
+
+---
+#### Page 3
+
+SCREEN SHOT 3
+
+Here 
 
 
 
