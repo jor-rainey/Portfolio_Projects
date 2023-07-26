@@ -14,6 +14,7 @@ For this project I therefore intended to:
 ## Tools
 - **Excel** for initial data cleaning and format changes
    - XML import wizard
+   - Macros
 - **SQL** *(PostgreSQL)* for more in depth data cleaning and calculating additional information
      - Temp tables
      - CTEs
@@ -23,6 +24,10 @@ For this project I therefore intended to:
      - Lag functions
      - Others
 - **Tableau** for final visulaisations
+     - Building Dashboards
+     - Creating Theme
+     - ADD MORE HERE
+
 
 ## Process
 
