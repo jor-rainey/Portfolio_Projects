@@ -392,19 +392,18 @@ As Tableau Public cannot link directly to PostgreSQL the tables have to be expor
 Using Tableau I have created a number of visulaisations from this data to make trends, personal bests and general run information more accessible.
 The full dashboard can be seen within TABLEAU PUBLIC along with the full interacvtivity. However the screenshots below can demonstrate how the information is displayed along with some of the information that can be gathered.
 
----
-#### Page 1
+#### Strava Project Page 1
 
-SCRTEEN SHOT 1
+![Strava Project Page 1](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Strava%20Project%20Screenshots/Strava%20Pg1.png)
 
 This page gives a short introduction to the data being displayed and then show some headline information. Notably the kilometerage increase since 2020, increase typical run length and increase in elevation change. All runs that take place in the two main locations also have their paths overlayed highlighting most frequent running routes.
 
 *Background map information and Latitude and Longitude information is hidden across this dashboard.*
 
 ---
-#### Page 2
+#### Strava Project Page 2
 
-SCREEN SHOT 2
+![Strava Project Page 2](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Strava%20Project%20Screenshots/Strava%20Pg2.png)
 
 The Distance and Average Pace graphic demonstrates the increase in typical run length and increase in typical run pace over the years. Additionally a general decrease in run pace as run length increases is apparent. Clusters of runs at just beyond 5km, 10km and half marathon distances can also be seen. 
 
@@ -415,18 +414,18 @@ Further information on this page includes Personal Bests and Running Distance To
 A filter on the page can adjust each visualisation to show each year individually.
 
 ---
-#### Page 3
+#### Strava Project Page 3 - 10km
 
-SCREEN SHOT 3 10km
+![Strava Project Page 3 - 10km](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Strava%20Project%20Screenshots/Strava%20Pg3.png)
 
 This page is split to show the same information for 1km, 5km, 10km and half-marathon distances.
 
 All pages show the improvement of Personal Best progression over time and, given the available white space on the graphs, space is available for annotations that point out other notable clusters/trends at each distance.
 
 ---
-#### Page 4
+#### Strava Project Page 4
 
-SCREEN SHOT 4
+![Strava Project Page 4](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Strava%20Project%20Screenshots/Strava%20Pg4.png)
 
 The Split Time Distribution graphic on this page plots the split time distribution along the length of each run. A slowing of the pace at greater distances maps as expected. However there appears to be little change between km 1 and around km 16. This is liekly because shorter slower runs in 2020/2021 bring down the average split time at lower diatances whereas once i started running greater distances my standard pace was quicker, broadly balancing out the averages foer the first 16km.
 
@@ -436,9 +435,9 @@ The Split Time v Elevation Change graphic nicely demonstrates an optimum elevati
 
 ---
 
-#### Page 5
+#### Strava Project Page 5
 
-SCREEN SHOT 5
+![Strava Project Page 5](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Strava%20Project%20Screenshots/Strava%20Pg5.png)
 
 Here any run can be selected and the route is mapped showing elevation change and split time. This page acts as an index and mirrors the information displayed on Strava for each run. 
 
