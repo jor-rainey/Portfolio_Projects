@@ -1,5 +1,7 @@
 # Strava Running Data Process Walkthough
 
+The project can be found here - [Strava Running Project](https://public.tableau.com/app/profile/jake.rainey/viz/StravaRunningDataProject/StravaRunningData)
+
 ## Aims
 Strava is an app that is used to record exercise, predominatly running and cycling using GPS data. I have used Strava solely for running over the past few years. The free versoin of Strava has limited functionality and whilst the GPS data for all runs is recorded it is dificult to see any trends or compare activites.
 For this project I therefore intended to:
@@ -39,15 +41,13 @@ However The Strava download with a .gpx file for each activity require more exte
 
 *This method will have to be altered once the Excel row limit is reached, most likely be limiting the XML import to only include activities since the previous xml import. A further option is that, given that the granularity of the data is one data point every second, every other data point could be deleted without a significant impact on the outputs*
 
-
-CREATE TABLE FOR CSV PGX INPUT
 In order to import the activity data to PostgreSQL a table has to be created with appropriate column headings and data types matching that contained in the .csv file.
 
-
-INPUT DATA
 The input for the Merged_activity_gpx table is updated by referencing the updated .csv that now includes the new GPS data for new activites.
 
-WALKTHROUGH SQL CODE
+#### PostgreSQL Code
+
+The full PostgreSQL code can be seen here:
 
 <Details>
 
@@ -375,8 +375,6 @@ ORDER BY split_dist ASC
 ```
 </Details>
 
-OUTPUTS
-
 The SQL code uses the raw merged inputs of Latidute, Longitide, Elevation and Timestamp to calculate and create a number of tables to be used in the visualisation. These include fields that are or could be useful for further analysis, most notably:
 - Distance
 - Speed
@@ -390,7 +388,7 @@ As Tableau Public cannot link directly to PostgreSQL the tables have to be expor
 ### Data Analysis
 
 Using Tableau I have created a number of visulaisations from this data to make trends, personal bests and general run information more accessible.
-The full dashboard can be seen within TABLEAU PUBLIC along with the full interacvtivity. However the screenshots below can demonstrate how the information is displayed along with some of the information that can be gathered.
+The full dashboard can be found on my Tableau Public profile [here](https://public.tableau.com/app/profile/jake.rainey/viz/StravaRunningDataProject/StravaRunningData) along with the full interacvtivity. However the screenshots below can demonstrate how the information is displayed along with some of the information that can be gathered.
 
 #### Strava Project Page 1
 
