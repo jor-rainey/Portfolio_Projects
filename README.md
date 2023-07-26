@@ -3,14 +3,16 @@ Data Analyst Portfolio Projects
 
 ## Strava Running Data
 Using my Strava running data I have created a Tableau Visualisation to track my progess.
-A detailed look at how I created this visualisation can be found HERE
+A detailed look at how I created this visualisation can be found here - [Strava Running Project Walkthrough](https://github.com/jor-rainey/Portfolio_Projects/blob/main/Strava_Running_Project/StravaReadme.md)
 
 ### Skills/Tools
 - Excel
 - PostgreSQL
 - Tableau
 
-LINK TO TABLEAU PUBLIC RUNNING
+This project can be found here - [Strava Running Project](https://public.tableau.com/app/profile/jake.rainey/viz/StravaRunningDataProject/StravaRunningData)
+
+![Strava Project Page 2](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Strava%20Project%20Screenshots/Strava%20Pg2.png)
 
 ## Energy Production
 A tool made to enable the comparison of the energy production of any two countries.
