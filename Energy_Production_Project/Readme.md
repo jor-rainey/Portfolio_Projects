@@ -24,6 +24,7 @@ For this project I therefore intended to:
   - Power Query Editor
   - Merges
   - Unpivot
+  - Design for usablilty/end user consideration
   - Others
 
 
