@@ -1,6 +1,6 @@
 # UK Air Travel Data Process Walkthrough
 
-The project can be found here - LINK TO TABLEAU PUBLIC
+The project can be found here - [UK Air Travel Project](https://public.tableau.com/app/profile/jake.rainey/viz/UKAirTravelJan2023/UKAirTravelDashboard)
 
 ## Aims
 
@@ -75,14 +75,45 @@ Care was taken in the calculation of the average delays to convert from the raw 
 
 ### Data Analysis
 
-DOMINATION OF RYANIR IN EUROPE - STANSTED HUB - LOWER FREQUENCY ROUTES
-BA OF LONGHAUL - HIGH FREQUENCY ROUTES 
+Tabeau was used to create this dashboard, the full version of this can be found on my Tableau Public profile [here](https://public.tableau.com/app/profile/jake.rainey/viz/UKAirTravelJan2023/UKAirTravelDashboard) along with full interactivity. The screenshots below demonstrate some of the capabilities and isights available using this dashboard.
+
+The following two screenshots show the differences between British Airways and Ryanair at their respective main hubs, Heathrow and Stansted:
+
+#### British Airways Heathrow Arrivals
+![BA Hub](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Air%20Travel%20Project%20Screenshots/Heathrow%20BA%20Hub.png)
+
+#### Ryanair Stansted Arrivals
+![Ryanair Hub](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Air%20Travel%20Project%20Screenshots/Stansted%20Ryanair%20Hub.png)
+
+British Airways, the UK flag carier, are focussing on more frequent longer haul flights on major routes. While Ryanair operate a more point to point model with less frequent routes to more desitiations, nearly all of which are short/medium haul within Europe. 
 
 
 
-SCREEN SHOTS OF FUNCTIONALITY
+Observations can also be made comparing flights from differing countries. For example flights from the USA are dominated by only a few UK airports and there is more fierce competition between different airlines on these routes, particularly JFK-LHR. 
 
-PUNCTULAITY DISTRIBUTION GRAPHIC - AIRLINE COMPARISON, RYANIAR V GOOD
+#### USA Arrivals, Heathrow Punctuality 
+![USA Arrivals](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Air%20Travel%20Project%20Screenshots/USA%20Map%20%2B%20Tooltip.png)
+
+Here we can see the few arrival airports (a consequency of the longhaul nature of the flights to the USA) and the punctulaity details at Heathrow 
+
+#### USA Arrivals, Competition and Punctuality Distribution
+![USA Arrivals Competition](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Air%20Travel%20Project%20Screenshots/USA%20Competition%20%2BPunctuality.png)
+
+The level of competetion between the airlines can be seen here along with the Punctuality Distribution of all arrivals from the USA. British Airways also tends to be an outlier in terms of punctuality for the most popular routes from the USA as can be seen in the example tooltip.
+
+
+
+This information can be contrasted against flight arrivals from Germany.
+The shorthaul nature of the flights from Germany allow for more point to point travel and whilst there is a similar level of comptetion between airlines these are largely kept on different routes. 
+
+#### Germany Arrivals, Route Info
+![Germany Arrivals Map](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Air%20Travel%20Project%20Screenshots/Germany%20Map%20%2B%20Tooltip.png)
+A more point to point route map is seen here given the short haul nature of these routes.
+
+#### Germany Arrivals, Competition and Punctuality Distribution
+![Germany Arrivals Competition](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Air%20Travel%20Project%20Screenshots/Germany%20Competition%20%2B%20Punctuality.png)
+A larger range of arrival airports seen in the most popular routes, with the punctuality distribution suggesting that shorter haul flights to less busy airports may aid punctulaity when compared to flights arriving from the USA.
+
 
 Further insights could be gained by including data across the different months of the year. This would demonstrate the seasonal changes in both flight numbers as well as routes used. The initial data cleaning and preparation would be much the same with the addition of a date for each flight (given the available data, only the month in which the flight took place is available) and a method to visualise the changes over time.
 
