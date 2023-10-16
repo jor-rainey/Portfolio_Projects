@@ -1,10 +1,10 @@
 # UK Air Travel Data Process Walkthrough
 
-The project can be found here - [UK Air Travel Project](https://public.tableau.com/app/profile/jake.rainey/viz/UKAirTravelJan2023/UKAirTravelDashboard)
+The full project can be found here - [UK Air Travel Project](https://public.tableau.com/app/profile/jake.rainey/viz/UKAirTravelJan2023/UKAirTravelDashboard)
 
 ## Aims
 
-The purpose of this project was to investigate the routes and punctuality of airlines and airports for the UK aviation market.
+The purpose of this project was to investigate the routes and punctuality of airlines and airports for the UK.
 For this project I intended to:
 - Map airline routes
 - Show number of flights on routes
@@ -18,7 +18,8 @@ For this project I intended to:
   - Other basic formulas
 - **Tableau** for final visualisations
   - Spatial calculations
-  - tooltip use
+  - Maps
+  - Filters/Slicers
 
 ## Process
 
@@ -30,12 +31,12 @@ It should be noted that this data only includes arrivals at major UK airports. T
 
 *January 2023 was chosen arbitrarily and seasonal changes could be seen with the addition of the data from other months*
 
-In order to plot airline routes data for the airport locations was sourced from [The Global Airport Database](https://www.partow.net/miscellaneous/airportdatabase/) 
+In order to plot airline routes data for the airport locations was sourced from [The Global Airport Database] (https://www.partow.net/miscellaneous/airportdatabase/) 
 
-
+ 
 ### Data Cleaning/Preparing
 
-With regard to the flight routes the raw data from the CAA only gives the arrival airport and the origin airport and country. This was supplemented within Excel with the data from the Global Airport Database to give a more complete picture of the routes in a more usable format. For example using aiport IATA codes as opposed to town/airport names. This helped to clarify the difference between similarly named places (e.g. DHAKA and DAKAR) or between multi airport cities (e.g. Milan Malpensa and Milan Linate). Principally this was acheved using Lookup functions, however given that the two data sources differed in format slightly, giving the town name vs airport name, occasional edge cases were found and corrected manually. 
+With regard to the flight routes the raw data from the CAA only gives the arrival airport, origin airport and country. This was supplemented within Excel with the data from the Global Airport Database to give a more complete picture of the routes in a more usable format. For example using aiport IATA codes as opposed to town/airport names. This helped to clarify the difference between similarly named places (e.g. DHAKA and DAKAR) or between multi-airport cities (e.g. Milan Malpensa and Milan Linate). Principally this was acheved using Lookup functions, however given that the two data sources differed in format slightly, giving the town name vs airport name, occasional edge cases were found and corrected manually. 
 
 For example the mixup of Syndey Airport (Australia, ~44,000,000 annual passengers) and Sydney Airport (Canada, ~180,000 annual passengers) It is important to always be aware if the data at any part of the process makes sense. I only spotted this error at the visualisation stage and had to go back to correct within Excel.
  
@@ -43,15 +44,16 @@ Collating this data also allowed for the concatenation of the IATA codes to form
 
 This section of the data along with the associated fact tables for Origin Airport, Arrival Airport and Airline eventually became the main filterable sections of the final dashboard within Tableau.
 
-SCREENSHOT OF AIRPORT FACT TABLE 
-
-SCREENSHOT OF TABEAU INPUT SCROLL FAR LEFT
-
+#### Origin Airport Fact Table
+![Origin Airport Fact Table](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Air%20Travel%20Project%20Screenshots/Origin%20Airport%20Fact%20Table.png)
 
 
-The airline group to which an airline belongs has been researched manually for each airline found in the data. Little other choice is available when looking to include this data given a central source is hard to find and the differing legal statuses between owners, subsidiaries, partners etc. This is important to include when looking into competition between airlines especially when the grouings are not always intuative (e.g. **Ryanair Group** own *Ryanair* and *Ryanair UK* as well as less obviously owning *Malta Air*, *Lauda Motion*, *Lauda Europe* and *Buzz*).
 
-Basic sense checking of the data throughout the data cleaning process was underaken using pivot tables within Excel. This aided in ensuring the various formulas were working as expected and allowed the investigation of elements of the data to be used in the final visualisation. 
+
+#### Tableau Input Data
+![Tableau Input Data](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Air%20Travel%20Project%20Screenshots/Tableau%20Input%20Data%20far%20left.png)
+
+
 
 Consideration was given to the addition of regional airport groupings for the UK and other countries with many airports found within this data set. However, these are less intuative depending on the country and give an unecessary extra level of granularity that would be unused for most countries given the low amount of airports.
 
@@ -60,7 +62,9 @@ Consideration was given to the addition of regional airport groupings for the UK
 The other main stage in the data preparation was the changing of the punctuality data from percentages, as given by the CAA, to the count of flights. This reverted the aggregated data proveded by the CAA back to the raw data originally collected which is more prefereable to work with. The percentages then became represented later on within Tableau using the punctuality pie charts.
 The process of changing this was achieved using simple Excel formuals as the total number of flights on each route was also given
 
-SCREENSHOT OF TOTAL FLIGHTS FOR EACH DELAY CATEGORY
+#### Flight Counts
+![Percentage to Flight Count](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Air%20Travel%20Project%20Screenshots/Percent%20to%20Flight%20Count.png)
+
 
 Another aspect of the reported data from the CAA was to include cancelled flights in the total number of flights on each route. I took the descision to remove these flights from the data as part of the cleaning process. This was due to the very few numbers of cancelled flights v actual flights and the fact that not ommiting these altered the punctuality percantages. 
 
@@ -68,10 +72,14 @@ Another aspect of the reported data from the CAA was to include cancelled flight
 The last section of data cleaned before the final visualisation was the average delays for routes, airports and airlines. 
 This was calculated for each of these categories using SUMIF functions weighting the average delays from the raw data with consideration to the number of flights. 
 
-SCREENSHOT FROM EXCEL OF FORMULA FOR AV DELAY
+#### Average Airline Delay
+![Average Airline Delay](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Air%20Travel%20Project%20Screenshots/Average%20Delay%20Calc.png)
 
 Care was taken in the calculation of the average delays to convert from the raw "Decimal Time" to a more understandable format. (e.g. 2.5 mins to 00:02:30)
 
+The airline group to which an airline belongs has been researched manually for each airline found in the data. Little other choice is available when looking to include this data given a central source is hard to find and the differing legal statuses between owners, subsidiaries, partners etc. This is important to include when looking into competition between airlines especially when the grouings are not always intuative (e.g. **Ryanair Group** own *Ryanair* and *Ryanair UK* as well as less obviously owning *Malta Air*, *Lauda Motion*, *Lauda Europe* and *Buzz*). Whilst difficult to convey in the final visualisation is impotant to show and is available in the tooltips of the Airline - Flights section. 
+
+Basic sense checking of the data throughout the data cleaning process was underaken using pivot tables within Excel. This aided in ensuring the various formulas were working as expected and allowed the investigation of elements of the data to be used in the final visualisation. 
 
 ### Data Analysis
 
@@ -79,10 +87,10 @@ Tabeau was used to create this dashboard, the full version of this can be found 
 
 The following two screenshots show the differences between British Airways and Ryanair at their respective main hubs, Heathrow and Stansted:
 
-#### British Airways Heathrow Arrivals
+#### British Airways - Heathrow Arrivals
 ![BA Hub](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Air%20Travel%20Project%20Screenshots/Heathrow%20BA%20Hub.png)
 
-#### Ryanair Stansted Arrivals
+#### Ryanair - Stansted Arrivals
 ![Ryanair Hub](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Air%20Travel%20Project%20Screenshots/Stansted%20Ryanair%20Hub.png)
 
 British Airways, the UK flag carier, are focussing on more frequent longer haul flights on major routes. While Ryanair operate a more point to point model with less frequent routes to more desitiations, nearly all of which are short/medium haul within Europe. 
@@ -106,12 +114,13 @@ The level of competetion between the airlines can be seen here along with the Pu
 This information can be contrasted against flight arrivals from Germany.
 The shorthaul nature of the flights from Germany allow for more point to point travel and whilst there is a similar level of comptetion between airlines these are largely kept on different routes. 
 
-#### Germany Arrivals, Route Info
+#### Germany Arrivals, Route Information
 ![Germany Arrivals Map](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Air%20Travel%20Project%20Screenshots/Germany%20Map%20%2B%20Tooltip.png)
-A more point to point route map is seen here given the short haul nature of these routes.
+
 
 #### Germany Arrivals, Competition and Punctuality Distribution
 ![Germany Arrivals Competition](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Air%20Travel%20Project%20Screenshots/Germany%20Competition%20%2B%20Punctuality.png)
+
 A larger range of arrival airports seen in the most popular routes, with the punctuality distribution suggesting that shorter haul flights to less busy airports may aid punctulaity when compared to flights arriving from the USA.
 
 
@@ -119,10 +128,13 @@ Further insights could be gained by including data across the different months o
 
 ## Data Visulaisation
 
-There is a complex web of international airline groupings that, whilst difficult to convey in the final visualisation is impotant to show and is available in the tooltips of the Airline - Flights section. 
+The route map is the main visual element of this dashboard. Placed centrally and first on the dashboard it quickly captures the users attention and invites the user to interact with it using the adjacent filters. Further detail and context to the map is given in the remaining charts are available below.
 
-A possible additon to this dashboard would be to further demonstrate the airline groupings, although perhaps more usefull in a global context as opposed to flights arriving in the UK.
+![Final Dashboard, Arrivals from Poland](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Air%20Travel%20Project%20Screenshots/Final%20Screenshot.png)
 
 The colour scheme and fonts (sans-serif white and yellow on a black background) have been selected to evoke the airport departure board colour schemes that are ubiquitous across the world.
-The punctiality pie chart follow an intuitive Green - Red traffic light system, and the airlines are coloured to match the main colour of their livery. Both these elements attempt to aid in making the dashboard more easilly and quickly readable. The only drawback being that many airlines use similar reds and blues. However given the number of airlines within the data set it is impossible to give distinct colours to each airline and this compromise is unaviodable.
+
+The punctiality pie charts follow an intuitive Green - Red traffic light system which is also used for the punctuality distribution. The addition of this colour to the punctuality distribution reinforces the information already displayed on the y-axis and helps to make the chart intuitively understandable.
+
+The airlines are coloured to match the main colour of their livery, again to make the information more intuitive to understand. The only drawback being that many airlines use similar reds and blues. However given the number of airlines within the data set it is impossible to give distinct colours to each airline and this compromise is unaviodable.
 
