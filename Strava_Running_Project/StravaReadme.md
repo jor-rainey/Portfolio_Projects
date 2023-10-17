@@ -1,9 +1,9 @@
-# Strava Running Data Process Walkthough
+# Strava Running Data Process Walkthrough
 
 The project can be found here - [Strava Running Project](https://public.tableau.com/app/profile/jake.rainey/viz/StravaRunningDataProject/StravaRunningData)
 
 ## Aims
-Strava is an app that is used to record exercise, predominatly running and cycling using GPS data. I have used Strava solely for running over the past few years. The free versoin of Strava has limited functionality and whilst the GPS data for all runs is recorded it is dificult to see any trends or compare activites.
+Strava is an app that is used to record exercise, predominantly running and cycling using GPS data. I have used Strava solely for running over the past few years. The free version of Strava has limited functionality and whilst the GPS data for all runs is recorded it is difficult to see any trends or compare activities.
 For this project I therefore intended to:
 - Identify long term trends in distance and speed
 - Easily view different runs with split times, elevation change and map
@@ -23,16 +23,16 @@ For this project I therefore intended to:
      - Type casting
      - Lag functions
      - Others
-- **Tableau** for final visulaisations
+- **Tableau** for final visualizations
      - Building Dashboards
      - Creating Theme
-     - ADD MORE HERE
+     - Navigation through dashboard
 
 
 ## Process
 
 ### Data Collection
-Strava allows for the bulk downlaod of all data held for any account. Once requested I have access to all the data that Strava has associated with my account. The relevant information for this project is a .csv file with the metadata for all activities and .gpx files for each individual activity. For Strava each run counts as a single 'activity'
+Strava allows for the bulk download of all data held for any account. Once requested I have access to all the data that Strava has associated with my account. The relevant information for this project is a .csv file with the metadata for all activities and .gpx files for each individual activity. For Strava each run counts as a single 'activity'
 
 *It should be noted that the Strava app appears to try and take a GPS reading every second, therefore for nearly all cases a new datapoint is created every second*
 
@@ -40,15 +40,15 @@ Strava allows for the bulk downlaod of all data held for any account. Once reque
 The .csv file with the activity metadata requires very little cleaning. The majority of columns are irrelevant and are deleted leaving only a few columns with relevant information: date, distance, time etc.
 
 
-However The Strava download with a .gpx file for each activity require more extensive preparation. .gpx files contain GPS data in .xml data format. 
+However The Strava download with a .gpx file for each activity requires more extensive preparation. .gpx files contain GPS data in .xml data format. 
 
-.gpx or .xml files cannot be imported dircetly into PostgreSQL. However using the XML import wizard in Excel all the .gpx files can be combined and converted to a .csv file. Once imported into Excel a large number of irrelevant rows and columns are removed. This leaves only columns for Latitude, Longitude, Elevation and Timestamp.
+.gpx or .xml files cannot be imported directly into PostgreSQL. However using the XML import wizard in Excel all the .gpx files can be combined and converted to a .csv file. Once imported into Excel a large number of irrelevant rows and columns are removed. This leaves only columns for Latitude, Longitude, Elevation and Timestamp.
 
-*This method will have to be altered once the Excel row limit is reached, most likely be limiting the XML import to only include activities since the previous xml import. A further option is that, given that the granularity of the data is one data point every second, every other data point could be deleted without a significant impact on the outputs*
+*This method will have to be altered once the Excel row limit is reached, most likely limiting the XML import to only include activities since the previous xml import. A further option is that, given that the granularity of the data is one data point every second, every other data point could be deleted without a significant impact on the outputs*
 
 In order to import the activity data to PostgreSQL a table has to be created with appropriate column headings and data types matching that contained in the .csv file.
 
-The input for the Merged_activity_gpx table is updated by referencing the updated .csv that now includes the new GPS data for new activites.
+The input for the Merged_activity_gpx table is updated by referencing the updated .csv that now includes the new GPS data for new activities.
 
 #### PostgreSQL Code
 
@@ -61,7 +61,7 @@ The full PostgreSQL code can be seen here:
 ```pgsql
 -- Full code to Tableau ready for Strava GPX data
 
---Creating claculated columns for later use
+--Creating calculated columns for later use
 -----START-----
 DROP TABLE IF EXISTS gpxstep;
 CREATE TEMP TABLE gpxstep AS
@@ -190,7 +190,7 @@ WHERE split_dist = incomplete_split;
 
 ALTER TABLE splits_100m_final
 DROP COLUMN incomplete_split;
---This removes the unecessary column
+--This removes the unnecessary column
 
 DROP TABLE IF EXISTS splits_100m;
 -- Removes intermediate table
@@ -267,7 +267,7 @@ WHERE split_dist = incomplete_split;
 
 ALTER TABLE latlongsplit_final
 DROP COLUMN incomplete_split;
---This removes the unecessary column
+--This removes the unnecessary column
 
 -- END OF LAT LONG SPLIT CREATION
 
@@ -300,7 +300,7 @@ WHERE split_dist = incomplete_split;
 
 ALTER TABLE splits_1000m_final
 DROP COLUMN incomplete_split;
---This removes the unecessary column
+--This removes the unnecessary column
 
 DROP TABLE IF EXISTS splits_1000m;
 -- Removes intermediate table
@@ -310,7 +310,7 @@ DROP TABLE IF EXISTS splits_1000m;
 -----START-----
 --Fastest 100m
 
--- Due to inacuracies in the gps readings and small distance, results not to be trusted
+-- Due to inaccuracies in the gps readings and small distance, results not to be trusted
 SELECT
 split_dist,
 split_time,
@@ -380,26 +380,26 @@ ORDER BY split_dist ASC
 ```
 </Details>
 
-The SQL code uses the raw merged inputs of Latidute, Longitide, Elevation and Timestamp to calculate and create a number of tables to be used in the visualisation. These include fields that are or could be useful for further analysis, most notably:
+The SQL code uses the raw merged inputs of Latitude, Longitude, Elevation and Timestamp to calculate and create a number of tables to be used in the visualization. These include fields that are or could be useful for further analysis, most notably:
 - Distance
 - Speed
 - Splits Times (for every 100m/1km/5km/10km and Half Marathon)
 - Primary Keys for each split
 - Rolling Split Times (Using a window function to more accurately find Personal Bests, granularity 100m)
-- 'Point' Speed (speed between consecutive data points, susceptible to error due to vaugaries of GPS connection)
+- 'Point' Speed (speed between consecutive data points, susceptible to error due to vagaries of GPS connection)
 
 As Tableau Public cannot link directly to PostgreSQL the tables have to be exported from PostgreSQL as .csv files. The exported tables are then collated in an Excel file where a Marco is run that converts the date types and units for various columns to those more easily manipulated within Tableau.
 
 ### Data Analysis
 
-Using Tableau I have created a number of visulaisations from this data to make trends, personal bests and general run information more accessible.
-The full dashboard can be found on my Tableau Public profile [here](https://public.tableau.com/app/profile/jake.rainey/viz/StravaRunningDataProject/StravaRunningData) along with the full interacvtivity. However the screenshots below can demonstrate how the information is displayed along with some of the information that can be gathered.
+Using Tableau I have created a number of visualizations from this data to make trends, personal bests and general run information more accessible.
+The full dashboard can be found on my Tableau Public profile [here](https://public.tableau.com/app/profile/jake.rainey/viz/StravaRunningDataProject/StravaRunningData) along with the full interactivity. However the screenshots below can demonstrate how the information is displayed along with some of the information that can be gathered.
 
 #### Strava Project Page 1
 
 ![Strava Project Page 1](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Strava%20Project%20Screenshots/Strava%20Pg1.png)
 
-This page gives a short introduction to the data being displayed and then show some headline information. Notably the kilometerage increase since 2020, increase typical run length and increase in elevation change. All runs that take place in the two main locations also have their paths overlayed highlighting most frequent running routes.
+This page gives a short introduction to the data being displayed and then shows some headline information. Notably the kilometerage increase since 2020, increase typical run length and increase in elevation change. All runs that take place in the two main locations also have their paths overlayed highlighting most frequent running routes.
 
 *Background map information and Latitude and Longitude information is hidden across this dashboard.*
 
@@ -410,11 +410,11 @@ This page gives a short introduction to the data being displayed and then show s
 
 The Distance and Average Pace graphic demonstrates the increase in typical run length and increase in typical run pace over the years. Additionally a general decrease in run pace as run length increases is apparent. Clusters of runs at just beyond 5km, 10km and half marathon distances can also be seen. 
 
-The Split Time Distribution graph follows an expected pattern. Given the lareg enough sample size the majority of splits cluster around the average split time while tailing away at the faster and slower ends. The graph is capped at a max of 6:00mins/km removing outliers (occasionally where there are errors in the GPS data) and the long tail to the distribution. This allows more ogf the available grapoh space to be used for the relevant information, in this case the vast majority of spit times. The other dimension on this graph indicates the elevation change of each split. While it can be seen that where the elevation increases across a split the split time slows (and visa-versa) this is better demonstrated in visua;iosations later in the dashboard. 
+The Split Time Distribution graph follows an expected pattern. Given the large enough sample size the majority of splits cluster around the average split time while tailing away at the faster and slower ends. The graph is capped at a max of 6:00mins/km removing outliers (occasionally where there are errors in the GPS data) and the long tail to the distribution. This allows more of the available graph space to be used for the relevant information, in this case the vast majority of split times. The other dimension on this graph indicates the elevation change of each split. While it can be seen that where the elevation increases across a split the split time slows (and visa-versa) this is better demonstrated in visualizations later in the dashboard. 
 
 Further information on this page includes Personal Bests and Running Distance Total split per year where the drop off in mid 2023 correlates with an injury and recovery time.
 
-A filter on the page can adjust each visualisation to show each year individually.
+A filter on the page can adjust each visualization to show each year individually.
 
 ---
 #### Strava Project Page 3 - 10km
@@ -430,11 +430,11 @@ All pages show the improvement of Personal Best progression over time and, given
 
 ![Strava Project Page 4](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Strava%20Project%20Screenshots/Strava%20Pg4.png)
 
-The Split Time Distribution graphic on this page plots the split time distribution along the length of each run. A slowing of the pace at greater distances maps as expected. However there appears to be little change between km 1 and around km 16. This is liekly because shorter slower runs in 2020/2021 bring down the average split time at lower diatances whereas once i started running greater distances my standard pace was quicker, broadly balancing out the averages foer the first 16km.
+The Split Time Distribution graphic on this page plots the split time distribution along the length of each run. A slowing of the pace at greater distances maps as expected. However there appears to be little change between km 1 and around km 16. This is likely because shorter slower runs in 2020/2021 bring down the average split time at lower distances whereas once I started running greater distances my standard pace was quicker, broadly balancing out the averages for the first 16km.
 
-The Split Time v Elevation Change graphic nicely demonstrates an optimum elevation change for maximum pace. The trend line shows quicker times where there is a negative elevation change as expected but also that once the elevation change is greater than -14m/km the positive effects begin to reduce. When filtered for different years the profile of runs is very apparent, barely any elevation change during 2020 (as all runs where along a river) and far greater elevation change in later years when most runs were in a different location.
+The Split Time v Elevation Change graphic nicely demonstrates an optimum elevation change for maximum pace. The trend line shows quicker times where there is a negative elevation change as expected but also that once the elevation change is greater than -14m/km the positive effects begin to reduce. When filtered for different years the profile of runs is very apparent, barely any elevation change during 2020 (as all runs were along a river) and far greater elevation change in later years when most runs were in a different location.
 
-*Outliers have been removed to better display trends for typical elevation chanegs and paces, plotting all points would leave a lot of white space and make conculsions dificcult to draw due to difficulty in reading the graph*
+*Outliers have been removed to better display trends for typical elevation changes and paces, plotting all points would leave a lot of white space and make conclusions difficult to draw due to difficulty in reading the graph*
 
 ---
 
@@ -449,11 +449,11 @@ Here any run can be selected and the route is mapped showing elevation change an
 
 ### Data Visualisation
 
-Throughout the visualisation a consistent simple style, colour scheme and layout is used. This aids in the understanding and ease of use of the visualisations as well as creating a more professional look.
+Throughout the visualization a consistent simple style, colour scheme and layout is used. This aids in the understanding and ease of use of the visualizations as well as creating a more professional look.
 
 Buttons for navigation give more of a flow through the data than the standard Tableau pages that are also available to use as navigation through the dashboard.
 
-The layout has been configured sepcifically for a laptop browser window. However the layout and readiablilty would have to be assessed for different screen types depending on the anticipated use cases 
+The layout has been configured specifically for a laptop browser window. However the layout and readability would have to be assessed for different screen types depending on the anticipated use cases 
 
 
 
