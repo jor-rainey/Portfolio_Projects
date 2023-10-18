@@ -4,13 +4,13 @@ The project can be found [here](https://github.com/jor-rainey/Portfolio_Projects
 
 ## Aims
 
-The majority of greenhouse gas emissions globally come from energy production (72%, Climate Analysis Indicators Tool (World Resources Institute, 2017)) In order to gain more insight into the largest greenhouse gas emmiting countries I set out to create a way to compare them giving context to the raw figures.
+The majority of greenhouse gas emissions globally come from energy production (72%, Climate Analysis Indicators Tool (World Resources Institute, 2017)) In order to gain more insight into the largest greenhouse gas emitting countries I set out to create a way to compare them giving context to the raw figures.
 
 For this project I therefore intended to:
 - Create a comparison tool for countries emissions broken down by energy source
-- Allow for comparisions over time
+- Allow for comparisons over time
 - Show further context allowing for a countries size/population
-- Easy/consistent side by side visualisation
+- Easy/consistent side by side visualization
   
 ## Tools
 
@@ -21,11 +21,11 @@ For this project I therefore intended to:
   - Type Casting
   - Others
 
-- **Power BI** for data cleaning and preparation along with final visualisations
+- **Power BI** for data cleaning and preparation along with final visualizations
   - Power Query Editor
   - Merges
   - Unpivot
-  - Design for usablilty/end user consideration
+  - Design for usability/end user consideration
   - Others
 
 
@@ -33,7 +33,7 @@ For this project I therefore intended to:
 
 ### Data Collection
 
-All data for this project was sourced from the the World Bank Open Data website (https://data.worldbank.org/) This was in order to provide cosistently formatted data across all countries from a trustworthy source.
+All data for this project was sourced from the World Bank Open Data website (https://data.worldbank.org/) This was in order to provide consistently formatted data across all countries from a trustworthy source.
 The data from the World Bank included the percentage of energy generated each year for each country split per energy source type (hydroelectric, coal etc.) along with other useful secondary information such as population.
 
 
@@ -44,12 +44,12 @@ Each energy source had its own Excel file and was available for download only in
 ![Excel Wide](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Energy%20Project%20Screenshots/Excel%20Wide.png)
 
 In order to ensure a more workable data set these Excel files were transformed from a "wide" to "long" format within PostgreSQL.
-While "wide" data tends to be easier to interpret and read, it is far easier to create visualisations and reports when the data is in "long" format. This is therefore often a key step irrespective of the visualisation software used.
+While "wide" data tends to be easier to interpret and read, it is far easier to create visualizations and reports when the data is in "long" format. This is therefore often a key step irrespective of the visualization software used.
 
-In addition to this transformation the data sources were collated, using a number of joins, into one table with the addition of a reference id column (a concatenation of year and coutry name) Further work in PostgreSQL included the tidying of data using type casts and simple calculations. For example using population figures to generate per capita information.
+In addition to this transformation the data sources were collated, using a number of joins, into one table with the addition of a reference id column (a concatenation of year and country name) Further work in PostgreSQL included the tidying of data using type casts and simple calculations. For example using population figures to generate per capita information.
 
 #### PostgreSQL Code
-The full PostgeSQL code used for this project can be found here:
+The full PostgreSQL code used for this project can be found here:
 
 <Details>
 
@@ -1081,7 +1081,7 @@ order by country_name asc, year asc
 </Details>
 
 
-*This code includes a section relating to net energy imports that which has not been included in the final visualisations. Net imports are necessarily coverd in the production values of other countries*
+*This code includes a section relating to net energy imports that has not been included in the final visualizations. Net imports are necessarily covered in the production values of other countries*
 
 *In addition, while this code runs effectively, the same results of this code can surely be achieved more efficiently due to the frequent repetition in the wide/long format transformation*
 
@@ -1090,7 +1090,7 @@ order by country_name asc, year asc
 
 Power BI can connect directly to the PostgreSQL database and tables created by running the PostgreSQL code. Once this connection has been established additional data preparation is required using the Power BI Power Query Editor.
 
-Following the amalgamation of all the energy sources data into one table this again needs to be trandformed from "wide" to "long" format. This can be achieved by unpivoting the data allowing the energy source to be a more easily visualtsed variable.
+Following the amalgamation of all the energy sources data into one table this again needs to be transformed from "wide" to "long" format. This can be achieved by unpivoting the data allowing the energy source to be a more easily visualized variable.
 
 The initial "wide" format can be seen here:
 
@@ -1100,7 +1100,7 @@ And after transformation the "long" format can be seen here:
 ![Power Query Long](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Energy%20Project%20Screenshots/Power%20Query%20Long.png)
 
 
-The final few adjustments within the Power Query Editor included filtering out non-countries from the country list (MIddle Income, OEDC, EU, etc.), the additional column indicating whether or not the energy source is "Green", tweaking of units and finally a merge of the queries to bring in population and power consumption/capita. The addition of which can be seen below:
+The final few adjustments within the Power Query Editor included filtering out non-countries from the country list (MIddle Income, OECD, EU, etc.), the additional column indicating whether or not the energy source is "Green", tweaking of units and finally a merge of the queries to bring in population and power consumption/capita. The addition of which can be seen below:
 
 ![Power Query Final](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Energy%20Project%20Screenshots/Power%20Query%20Post%20Merge.png)
 
@@ -1113,26 +1113,27 @@ However the screenshot below can be used to compare the energy production source
 
 ![Final Dashboard](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Energy%20Project%20Screenshots/Dashboard%20Final.png)
 
-The screenshot has France and Germany selected whcih are interesting and appropriate countires to compare. This is due to the many similarities in terms of; geography, politics, population and energy consumption.
-However clear differences in energy production can still be seen. Most notably both countries have Nuclear power take up an increasing proportion of energy production in the 1970s. In France this continues through the 1980s to level out at around 75% of total production leaving a broadly stable energy production make up for the past 25 years. 
-Politically in Germany nuclear power faced more difficulties and after similar initial investment as France the proportion of nuclear energy tapered away to around a mere 15% for the most recent available year. In lieu of nuclear power Germany can be seen to be relying more heavilly on coal and has a significant recent uptick in renewable energy.
+The screenshot has France and Germany selected which are interesting and appropriate countries to compare. This is due to the many similarities in terms of; geography, politics, population and energy consumption.
+However, clear differences in energy production can still be seen. Most notably both countries had Nuclear power take up an increasing proportion of energy production in the 1970s. In France this continued through the 1980s to level out at around 75% of total production leaving a broadly stable energy production make up for the past 25 years. 
+Politically in Germany nuclear power faced more difficulties and after similar initial investment as France the proportion of nuclear energy tapered away to around a mere 15% for the most recent available year. In lieu of nuclear power Germany can be seen to be relying more heavily on coal and has a significant recent uptick in renewable energy.
 
-As an extension to this project it could be interesting to delve deeper into the subcategories of Renewable Energy (e.g. solar, wind, etc.). However data for this and for years more recent that 2014, where more intersting trends are likely found, was less readilly available for such a wide range of countries.
-If particualr countries were of interest it would also be possible to annotate graphs with potential causes of the change in energy production sources. This could range from technological advances to geo-political or policy changes particular to the country in question. 
+As an extension to this project it could be interesting to delve deeper into the subcategories of Renewable Energy (e.g. solar, wind, etc.). However data for this and for years more recent than 2014, where more interesting trends are likely found, was less readily available for such a wide range of countries.
+If particular countries were of interest it would also be possible to annotate graphs with potential causes of the change in energy production sources. This could range from technological advances to geo-political or policy changes particular to the country in question. 
 
 ### Data Visualisation
 
 For this dashboard, created with ease of two country comparison in mind, it was important to show as much useful clear information as possible on one page in a side by side format. For this a neutral background colour scheme is used here and instructions are given to the user for selecting countries to compare to ease usability.
 The formatting of each graph for each country is also important so that the years on the x axis line up vertically across the dashboard, again to ease the comparison across time.
 
-The main intention of each of the graphs is to show the overview and long term trends of each variable over time. However more detailed figures can be found in the tooltips of all graphs, and the cross filtering aides in the comparison of the particualr selected variable.
+The main intention of each of the graphs is to show the overview and long term trends of each variable over time. However more detailed figures can be found in the tooltips of all graphs, and the cross filtering aids in the comparison of the particular selected variable.
 
-The colour schemes of the graphs have been intentionally chosen to aid in the easy identification of each energy source (Renewable - Green, Hydro - Blue, etc.). This helps to mitigate against any crowding of the graphs especially 'Domestic Energy Production Composition kWh'. The approximate limit for useful numbers of variables shown on a line graph is being reached in this example.
+The color schemes of the graphs have been intentionally chosen to aid in the easy identification of each energy source (Renewable - Green, Hydro - Blue, etc.). This helps to mitigate against any crowding of the graphs especially 'Domestic Energy Production Composition kWh'. The approximate limit for useful numbers of variables shown on a line graph is being reached in this example.
 
 ![Dashboard Close up](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Energy%20Project%20Screenshots/Close%20up.png)
 
-An important aspect of building the dashboard was to ensure that the y-axis scales of all graphs of both countries remain the same. This ensured that when comparing two countries with vastly different energy production amounts the difference between them was obviously apparent to the viewer of the dashboard. While it should be anticipated that, for example, China and Cameroon are not terribly useful countries to compare due to their massive population and energy consumption differences. If the y-axis scales of energy production are allowd to act independantly for each country there is scope for confusion or incorrect conclusions to be drawn.
+An important aspect of building the dashboard was to ensure that the y-axis scales of all graphs of both countries remain the same. This ensured that when comparing two countries with vastly different energy production amounts the difference between them was obviously apparent to the viewer of the dashboard. While it should be anticipated that, for example, China and Cameroon are not terribly useful countries to compare due to their massive population and energy consumption differences. If the y-axis scales of energy production are allowed to act independently for each country there is scope for confusion or incorrect conclusions to be drawn.
 
 ![Bad Example](https://github.com/jor-rainey/ImagesforReadMe/blob/main/Energy%20Project%20Screenshots/Bad%20Example.png)
+
 
 
