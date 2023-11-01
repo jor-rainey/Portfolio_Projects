@@ -22,7 +22,7 @@ Using my Strava running data I have created a Tableau Visualisation to track my 
 
 This project can be found here - [Strava Running Project](https://public.tableau.com/app/profile/jake.rainey/viz/StravaRunningDataProject/StravaRunningData)
 
-A detailed look at how I created this visualization can be found here - [Strava Running Project Walkthrough](https://github.com/jor-rainey/Portfolio_Projects/blob/main/Strava_Running_Project/StravaReadme.md)
+A detailed look at how I created this visualization can be found here - [Strava Running Project Walkthrough](https://github.com/jor-rainey/Portfolio_Projects/blob/main/Strava_Running_Project/Readme.md)
 
 ### Skills/Tools
 - Excel
