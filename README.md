@@ -50,5 +50,15 @@ A detailed look at how I created this tool can be found here - [Energy Productio
 
 
 
+## UK Air Quality
+An initial investigation into UK air quality as measured by the Department for Environment, Food and Rural Affairs (DEFRA) since 2000.
+
+A Jupyter Notebook with the findings alongside the python code for this investigation can be found here - [UK Air Quality](https://github.com/jor-rainey/Portfolio_Projects/blob/main/UK_Air_Quality_Project/UK%20Air%20Quality.ipynb)
+
+### Skills/Tools
+- Python (Pandas, Numpy, Matplotlib)
+- Jupyter Notebook
+
+![Jupyter Screenshot](https://github.com/jor-rainey/ImagesforReadMe/blob/main/UK%20Air%20Quality%20Screenshots/Jupyter%20Air%20Quality.png)
 
 
