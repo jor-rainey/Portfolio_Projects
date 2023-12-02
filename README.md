@@ -37,8 +37,7 @@ A detailed look at how I created this visualization can be found here - [Strava 
 ## Life Expectancy Machine Learning
 Creating decision trees and a random forest model to predict Life Expectancy given a number of predictor variables.
 
-The full project can be found here 
-A Jupyter Notebook with the machie learning models and explanations can be found here - [Life Expectancy Models](https://github.com/jor-rainey/Portfolio_Projects/blob/main/Life%20Expectancy%20Project/Life%20Expectancy%20Project.ipynb)
+A Jupyter Notebook with the machine learning models and explanations can be found here - [Life Expectancy Models](https://github.com/jor-rainey/Portfolio_Projects/blob/main/Life%20Expectancy%20Project/Life%20Expectancy%20Project.ipynb)
 
 ### Skills/Tools
 - Python (Pandas, Numpy, Matplotlib, Seaborn, Sklearn, decision trees, random forest, machine learning)
